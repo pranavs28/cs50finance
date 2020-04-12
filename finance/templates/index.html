@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>TOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in tabledata %}
+            {% if row['shares'] > 0 %}
+                <tr>
+                    <td>{{ row['symbol'] }}</td>
+                    <td>{{ row['name'] }}</td>
+                    <td>{{ row['shares'] }}</td>
+                    <td>{{ row['price'] }}</td>
+                    <td>{{ row['total'] }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        <tr>
+            <td>CASH</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ cash }}</td>
+        <tfoot>
+            <tr>  
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th>{{ cashtotal }}</th>
+            </tr>
+        </tfoot>
+    </tbody>
+
+</table>
+    
+{% endblock main %}
